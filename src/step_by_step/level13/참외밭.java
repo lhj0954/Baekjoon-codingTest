@@ -8,14 +8,18 @@ public class 참외밭 {
         switch (order[0]) {
             case "1":
                 point[i][0] = point[i-1][0] + Integer.parseInt(order[1]);
+                point[i][1] = point[i-1][1];
                 break;
             case "2":
                 point[i][0] = point[i-1][0] - Integer.parseInt(order[1]);
+                point[i][1] = point[i-1][1];
                 break;
             case "3":
+                point[i][0] = point[i-1][0];
                 point[i][1] = point[i-1][1] - Integer.parseInt(order[1]);
                 break;
             default:
+                point[i][0] = point[i-1][0];
                 point[i][1] = point[i-1][1] + Integer.parseInt(order[1]);
                 break;
         }
@@ -33,9 +37,6 @@ public class 참외밭 {
             move(order, point, i);
         }
 
-        for (int i = 0; i < point.length; i++) {
-            System.out.println(point[i][0] + " "+ point[i][1]);
-        }
 
     }
 }
