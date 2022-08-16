@@ -1,9 +1,6 @@
 package step_by_step.level15;
 
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class N과M_3 {
     static String[] arr;
