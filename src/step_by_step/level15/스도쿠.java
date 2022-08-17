@@ -3,7 +3,7 @@ package step_by_step.level15;
 import java.util.*;
 
 public class 스도쿠 {
-    static String[][] arr = new String[9][9];
+    static String[][] board = new String[9][9];
 
     static HashSet<String> rowSet = new HashSet<>();
     static HashSet<String> columnSet = new HashSet<>();
@@ -12,32 +12,33 @@ public class 스도쿠 {
 
     static String findValue(int row, int column) {
         for (int i = 0; i < 9; i++) {
-            rowSet.add(arr[row][i]); //set이 문제 -> 비워야함
-            columnSet.add(arr[i][column]);
+            rowSet.add(board[row][i]);
+            columnSet.add(board[i][column]);
             options.add(String.valueOf(i+1));
         }
         int group_row = row/3;
         int group_column = column/3;
         for (int i = group_row*3; i < group_row*3 + 3; i++) {
             for (int j = group_column*3; j < 3; j++) {
-                groupSet.add(arr[i][j]);
+                groupSet.add(board[i][j]);
             }
         }
 
         options.removeAll(rowSet);
         options.removeAll(columnSet);
         options.removeAll(groupSet);
+        //비어 있다면 그전 배열로 돌아가서 다음 값으로 입력 후 진행
         String[] values = options.toArray(new String[0]);
         Arrays.sort(values);
 
         return values[0];
     }
 
-    static void fill_sudoku () {
+    static void fill_sudoku (int depth) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (arr[i][j].equals("0")) {
-                    arr[i][j] = findValue(i, j);
+                if (board[i][j].equals("0")) {
+                    board[i][j] = findValue(i, j);
                     rowSet.clear();
                     columnSet.clear();
                     groupSet.clear();
@@ -52,14 +53,14 @@ public class 스도쿠 {
 
         for (int i = 0; i < 9; i++) {
             String input = sc.nextLine();
-            arr[i] = input.split(" ");
+            board[i] = input.split(" ");
         }
 
         fill_sudoku();
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                System.out.print(arr[i][j] + " ");
+                System.out.print(board[i][j] + " ");
             }
             System.out.println();
         }
