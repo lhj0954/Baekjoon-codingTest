@@ -56,7 +56,7 @@ public class 스도쿠 {
             board[i] = input.split(" ");
         }
 
-        fill_sudoku();
+        fill_sudoku(3);
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
