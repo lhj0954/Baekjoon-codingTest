@@ -1,35 +1,40 @@
 package step_by_step.level16;
 
-import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class 연속합 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int[] arr;
+    static Integer[] dp;
+    static int max;
 
-        int n = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
-        int[] arr2 = new int[n];
-        StringTokenizer inputs = new StringTokenizer(br.readLine());
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = Integer.parseInt(inputs.nextToken());
-        }
-        int max;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
-        arr2[0] = max = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            int tempt = arr[i] + arr2[i - 1];
-            if (arr[i] < tempt) {
-                arr2[i] = tempt;
-            }
-            if (arr[i] > tempt) {
-                arr2[i] = arr[i];
-            }
-            max = Math.max(max, arr2[i]);
+        int N = in.nextInt();
+
+        arr = new int[N];
+        dp = new Integer[N];
+
+        for(int i = 0; i < N; i++) {
+            arr[i] = in.nextInt();
         }
 
-        bw.write(""+max);
-        bw.close();
+        dp[0] = arr[0];
+        max = arr[0];
+
+        recur(N - 1);
+
+        System.out.println(max);
+    }
+
+    static int recur(int N) {
+
+        if(dp[N] == null) {
+            dp[N] = Math.max(recur(N - 1) + arr[N], arr[N]);
+
+            max = Math.max(dp[N], max);
+        }
+
+        return dp[N];
     }
 }
