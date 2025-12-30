@@ -1,4 +1,4 @@
-package step_by_step.level1;
+package level1;
 
 import java.util.Scanner;
 
@@ -9,6 +9,6 @@ public class AdivB {
         double a = scanner.nextInt();
         double b = scanner.nextInt();
 
-        System.out.println(a/b);
+        System.out.println(a / b);
     }
 }

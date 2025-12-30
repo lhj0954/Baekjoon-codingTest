@@ -1,4 +1,4 @@
-package step_by_step.level3;
+package level3;
 
 import java.util.Scanner;
 
@@ -8,11 +8,11 @@ public class AaddB_3 {
 
         int a = sc.nextInt();
 
-        for(int i=0; i<a; i++) {
+        for (int i = 0; i < a; i++) {
             int b = sc.nextInt();
             int c = sc.nextInt();
 
-            System.out.println(b+c);
+            System.out.println(b + c);
         }
     }
 }

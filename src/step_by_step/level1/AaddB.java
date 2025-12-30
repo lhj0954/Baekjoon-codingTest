@@ -1,4 +1,4 @@
-package step_by_step.level1;
+package level1;
 
 import java.util.*;
 
@@ -9,6 +9,6 @@ public class AaddB {
         int a = scanner.nextInt();
         int b = scanner.nextInt();
 
-        System.out.println(a+b);
+        System.out.println(a + b);
     }
 }
